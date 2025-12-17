@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЭкоСад | Блог о растениях, садоводстве и комнатных цветах</title>
+    <!-- Метатеги на основе данных Яндекс.Вордстат -->
+    <meta name="description" content="ЭкоСад - блог о растениях, садоводстве и комнатных цветах. Советы по уходу, выращиванию, подбору удобрений. Руководства для начинающих садоводов.">
+    <meta name="keywords" content="растения, садоводство, комнатные цветы, уход за растениями, выращивание растений, удобрения для растений, орхидеи, семена, сад, огород, полив растений, домашние растения">
+    <meta name="author" content="ЭкоСад">
+    <!-- Дополнительные метатеги для SEO -->
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Russian">
+    <!-- Open Graph метатеги для соцсетей -->
+    <meta property="og:title" content="ЭкоСад | Блог о растениях">
+    <meta property="og:description" content="Советы по уходу за растениями, руководства для начинающих садоводов">
+    <meta property="og:type" content="website">
+    <!-- Фавикон -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Ctext%20y='0.9em'%20font-size='90'%3E%F0%9F%8C%BF%3C/text%3E%3C/svg%3E">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Общие стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #ffffff;
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Хедер */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            border-bottom: 2px solid #333;
+            background-color: #ffe6f2;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2d5016;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #4a90e2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid #333;
+        }
+        
+        .logo-icon i {
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .header-icons {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffe6f2;
+            border: 2px solid #333;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .icon:hover {
+            background-color: #ffcce6;
+            transform: translateY(-3px);
+        }
+        
+        .icon i {
+            font-size: 1.2rem;
+            color: #333;
+        }
+        
+        /* Основной контент */
+        .main-content {
+            display: flex;
+            flex: 1;
+            padding: 30px;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        /* Левая колонка */
+        .left-column {
+            width: 70%;
+        }
+        
+        .content-block {
+            display: flex;
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .content-block:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-3px);
+        }
+        
+        .image-placeholder {
+            width: 350px;
+            height: 460px;
+            min-width: 200px;
+            background-color: #d4edda;
+            border: 2px solid #333;
+            margin-right: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        
+        .plant-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+        
+        .content-text {
+            flex: 1;
+        }
+        
+        .content-text h2 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #2d5016;
+        }
+        
+        .content-text p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        /* Правая колонка */
+        .right-column {
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        /* Новые стили для заголовков баннеров */
+        .banner-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2d5016;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+        
+        .banner {
+            height: 200px;
+            background-color: #4a90e2;
+            border: 2px solid #333;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .banner-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+        
+        .banner-text {
+            position: relative;
+            z-index: 2;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .banner:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(58, 123, 200, 0.3);
+        }
+        
+        /* Футер - ОБНОВЛЕН */
+        footer {
+            background-color: #ff66b2;
+            padding: 25px 30px;
+            display: flex;
+            justify-content: center;
+            border-top: 2px solid #333;
+            margin-top: auto;
+        }
+        
+        .footer-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            max-width: 900px;
+            width: 100%;
+            gap: 80px;
+        }
+        
+        .footer-left {
+            text-align: left;
+            flex: 1;
+            max-width: 350px;
+        }
+        
+        .footer-right {
+            text-align: left;
+            flex: 1;
+            max-width: 350px;
+        }
+        
+        .footer-column p {
+            color: #333;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+        
+        .footer-column a {
+            color: #333;
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column a:hover {
+            color: #2d5016;
+        }
+        
+        /* Навигация для мобильных устройств */
+        .mobile-nav {
+            display: none;
+            width: 100%;
+            background-color: #f0f8ff;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+        
+        .mobile-nav ul {
+            display: flex;
+            justify-content: space-around;
+            list-style: none;
+        }
+        
+        .mobile-nav li {
+            padding: 8px 12px;
+            font-weight: 500;
+        }
+        
+        .mobile-nav a {
+            text-decoration: none;
+            color: #2d5016;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 1200px) {
+            .main-content {
+                max-width: 95%;
+                padding: 20px;
+            }
+            
+            .footer-container {
+                max-width: 95%;
+                gap: 60px;
+            }
+        }
+        
+        @media (max-width: 1024px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .left-column, .right-column {
+                width: 100%;
+            }
+            
+            .right-column {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            
+            .banner {
+                width: 48%;
+                height: 180px;
+            }
+            
+            .mobile-nav {
+                display: block;
+            }
+            
+            .footer-container {
+                gap: 50px;
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .content-block {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .image-placeholder {
+                margin-right: 0;
+                margin-bottom: 20px;
+                width: 100%;
+                max-width: 300px;
+                height: 220px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .right-column {
+                flex-direction: column;
+            }
+            
+            .banner {
+                width: 100%;
+                height: 160px;
+                font-size: 1.1rem;
+            }
+            
+            footer {
+                padding: 20px;
+            }
+            
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 25px;
+                text-align: center;
+            }
+            
+            .footer-left, .footer-right {
+                text-align: center;
+                width: 100%;
+                max-width: 400px;
+            }
+            
+            .mobile-nav ul {
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                padding: 0 15px;
+            }
+            
+            .mobile-nav li {
+                width: 33%;
+                text-align: center;
+                margin-bottom: 10px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .content-block {
+                padding: 15px;
+            }
+            
+            .content-text h2 {
+                font-size: 1.2rem;
+            }
+            
+            .image-placeholder {
+                height: 200px;
+            }
+            
+            .banner-text {
+                padding: 10px;
+                font-size: 1rem;
+            }
+            
+            .footer-left, .footer-right {
+                max-width: 100%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            header {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .main-content {
+                padding: 15px;
+                gap: 20px;
+            }
+            
+            .header-icons {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .banner {
+                height: 140px;
+                font-size: 1rem;
+                padding: 15px;
+            }
+            
+            .mobile-nav li {
+                width: 50%;
+                font-size: 0.9rem;
+            }
+            
+            .mobile-nav i {
+                font-size: 1.2rem;
+            }
+            
+            .footer-container {
+                gap: 20px;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .logo {
+                font-size: 1.3rem;
+            }
+            
+            .logo-icon {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .icon {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .content-text h2 {
+                font-size: 1.1rem;
+            }
+            
+            .content-text p {
+                font-size: 0.9rem;
+            }
+            
+            .mobile-nav li {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Хедер -->
+    <header>
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fas fa-leaf" aria-hidden="true"></i>
+            </div>
+            <span>ЭкоСад</span>
+        </div>
+        
+        <div class="header-icons">
+            <div class="icon" role="button" aria-label="Меню сайта">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+            </div>
+            <div class="icon" role="button" aria-label="Поиск по сайту">
+                <i class="fas fa-search" aria-hidden="true"></i>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Мобильная навигация -->
+    <nav class="mobile-nav" aria-label="Основная навигация">
+        <ul>
+            <li><a href="#"><i class="fas fa-home" aria-hidden="true"></i> Главная</a></li>
+            <li><a href="#"><i class="fas fa-blog" aria-hidden="true"></i> Блог</a></li>
+            <li><a href="#"><i class="fas fa-shopping-cart" aria-hidden="true"></i> Магазин</a></li>
+            <li><a href="#"><i class="fas fa-seedling" aria-hidden="true"></i> Растения</a></li>
+            <li><a href="#"><i class="fas fa-info-circle" aria-hidden="true"></i> О нас</a></li>
+            <li><a href="#"><i class="fas fa-phone" aria-hidden="true"></i> Контакты</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Основной контент -->
+    <main class="main-content">
+        <!-- Левая колонка -->
+        <section class="left-column" aria-label="Статьи о растениях">
+            <h1 style="display:none">Статьи о растениях и садоводстве</h1>
+            
+            <article class="content-block">
+                <div class="image-placeholder">
+                    <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                         alt="Комнатные растения для начинающих" 
+                         class="plant-image">
+                </div>
+                <div class="content-text">
+                    <h2>Выращивание растений для начинающих</h2>
+                    <p>Пошаговое руководство по уходу за вашими первыми комнатными цветами. Узнайте, как выбрать горшок и почву, как правильно поливать и где разместить растения для оптимального роста.Начинающим садоводам стоит обратить внимание на неприхотливые виды растения. </p>
+                    
+                    <p>Важным аспектом является освещение: большинство комнатных растений предпочитают яркий рассеянный свет, но прямые солнечные лучи могут вызвать ожоги листьев.. Температурный режим также имеет значение — большинство комнатных растений хорошо себя чувствуют при 18-25°C.Не забывайте о влажности воздуха. </p>
+                    
+                    <p>Полив должен быть регулярным, но умеренным.  </p>
+                </div>
+            </article>
+            
+            <article class="content-block">
+                <div class="image-placeholder">
+                    <img src="https://artflora.ru/sites/default/files/inline/images/scale_1200-19.jpeg" 
+                         alt="Красивые орхидеи" 
+                         class="plant-image">
+                </div>
+                <div class="content-text">
+                    <h2>Популярные виды орхидей</h2>
+                    <p>Обзор самых красивых и неприхотливых видов орхидей. Советы по поливу и освещению. Орхидеи семейства Фаленопсис — самые популярные для домашнего выращивания благодаря своей выносливости и длительному периоду цветения.</p>
+                    
+                    <p>Дендробиум — прекрасный вариант для начинающих. Эти орхидеи имеют разнообразную цветовую палитру и форму цветков. </p>
+                    
+                    <p>Пафиопедилум (венерин башмачок) имеет уникальную форму цветка и предпочитает более прохладные условия. </p>
+                    
+                    <p>Оптимальная температура для большинства орхидей составляет 18-24°C днем и 15-18°C ночью.</p>
+                </div>
+            </article>
+            
+            <article class="content-block">
+                <div class="image-placeholder">
+                    <img src="https://cdn.poryadok.ru/upload/iblock/c90/c90930fede104e8e92833c3bb6c0ea17.jpeg" 
+                         alt="Удобрения для растений" 
+                         class="plant-image">
+                </div>
+                <div class="content-text">
+                    <h2>Удобрения: виды и применение</h2>
+                    <p>Разбираемся в минеральных и органических удобрениях. Как правильно подкармливать растения для активного роста, когда и какие удобрения использовать для разных видов растений.</p>
+                </div>
+            </article>
+        </section>
+        
+        <!-- Правая колонка -->
+        <aside class="right-column" aria-label="Баннеры и акции">
+            <!-- Исправлено: добавлены теги h3 для заголовков баннеров -->
+            <h3 class="banner-title">Акция на семена</h3>
+            <div class="banner" role="complementary">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvBfdPrELp_tm3GaFfLXhZISRc6NkyUWjg1A&s" 
+                     alt="Семена растений" 
+                     class="banner-image">
+                <div class="banner-text">
+                    Скидка 15% на все семена до конца недели!
+                </div>
+            </div>
+            
+            <h3 class="banner-title">Выгодная доставка</h3>
+            <div class="banner" role="complementary">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5OeQWosACYhBv09gVhcxt4LnXnC7iJ14KuA&s" 
+                     alt="Доставка растений" 
+                     class="banner-image">
+                <div class="banner-text">
+                    Бесплатная доставка при заказе от 3000 руб.
+                </div>
+            </div>
+        </aside>
+    </main>
+    
+    <!-- Футер - ОБНОВЛЕН -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column footer-left">
+                <p><strong>Контакты:</strong> info@ekosad.ru, +7 (123) 456-78-90</p>
+                <p><strong>Адрес:</strong> Москва, ул. Садовая, д. 15</p>
+            </div>
+            <div class="footer-column footer-right">
+                <p>© 2025 ЭкоСад. Все права защищены.</p>
+                <p><a href="#">Политика конфиденциальности</a></p>
+                <p>Сайт о растениях, садоводстве и комнатных цветах</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Сайт "ЭкоСад" загружен');
+            
+            // Добавляем интерактивность для иконок в хедере
+            const menuIcon = document.querySelector('.fa-bars').parentElement.parentElement;
+            const searchIcon = document.querySelector('.fa-search').parentElement.parentElement;
+            
+            menuIcon.addEventListener('click', function() {
+                alert('Меню сайта: Главная | Блог | Магазин | Контакты | О нас');
+            });
+            
+            searchIcon.addEventListener('click', function() {
+                const searchQuery = prompt('Что вы хотите найти на сайте?');
+                if (searchQuery) {
+                    alert(`Поиск: "${searchQuery}". Результаты поиска будут отображены на странице.`);
+                }
+            });
+            
+            // Добавляем интерактивность для контентных блоков
+            const contentBlocks = document.querySelectorAll('.content-block');
+            contentBlocks.forEach((block, index) => {
+                block.addEventListener('click', function() {
+                    const titles = [
+                        "Выращивание растений для начинающих",
+                        "Популярные виды орхидей", 
+                        "Удобрения: виды и применение"
+                    ];
+                    alert(`Открыта статья: "${titles[index]}"`);
+                });
+            });
+            
+            // Добавляем интерактивность для баннеров
+            const banners = document.querySelectorAll('.banner');
+            banners.forEach((banner, index) => {
+                banner.addEventListener('click', function() {
+                    if (index === 0) {
+                        alert('Акция: Скидка 15% на все семена! Переход в магазин семян.');
+                    } else {
+                        alert('Условия доставки: Бесплатная доставка при заказе от 3000 руб.');
+                    }
+                });
+            });
+            
+            // Добавляем адаптивное поведение для мобильных устройств
+            function checkScreenSize() {
+                const mobileNav = document.querySelector('.mobile-nav');
+                if (window.innerWidth <= 1024) {
+                    mobileNav.style.display = 'block';
+                } else {
+                    mobileNav.style.display = 'none';
+                }
+            }
+            
+            // Проверяем размер экрана при загрузке и изменении размера
+            checkScreenSize();
+            window.addEventListener('resize', checkScreenSize);
+            
+            // Предзагрузка изображений для лучшего UX
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.loading = 'lazy';
+            });
+        });
+    </script>
+</body>
+</html>
